@@ -1,14 +1,21 @@
 # Geode
 
-This is just a simple wrapper around some geolocation code.  By
-default it will just try to extract a US Zip Code from an address and
-provide those coordinates.  If configured, it can use
+This is just an extremely simple wrapper around some geolocation code
+we use at [WebKite](http://webkite.com).
+
+By default it will just try to extract a US Zip Code from an address
+and geolocate coordinates based on an [extremely sophisticated
+in-memory NoSQL store](./lib/geode/zips.rb) known as a
+["hash"](http://www.ruby-doc.org/core-2.1.1/Hash.html).
+
+But if configured, it can use
 [geocoder](https://github.com/alexreisner/geocoder) to do more refined
 geolocation.
 
-This way we ge some (albeit bad) results in development and test
-environments without having to pay a service, but some (good) results
-that we're willing to pay for in production environments.
+This way we ge (albeit bad) results in development and test
+environments without having to pay a commercial service, but (good)
+results which we're gladly willing to pay for in production
+environments.
 
 Usage:
 
