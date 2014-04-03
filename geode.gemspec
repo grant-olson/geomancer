@@ -7,9 +7,8 @@ Gem::Specification.new do |spec|
   spec.name          = "geode"
   spec.version       = Geode::VERSION
   spec.authors       = ["Grant T. Olson"]
-  spec.email         = ["grant@pikimal.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.email         = ["kgo@grant-olson.net"]
+  spec.summary       = %q{Simple wrapper around various geolocation services}
   spec.homepage      = ""
   spec.license       = "MIT"
 
