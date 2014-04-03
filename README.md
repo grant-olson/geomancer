@@ -1,11 +1,11 @@
-# Geode
+# Geomancer
 
 This is just an extremely simple wrapper around some geolocation code
 we use at [WebKite](http://webkite.com).
 
 By default it will just try to extract a US Zip Code from an address
 and geolocate coordinates based on an [extremely sophisticated
-in-memory NoSQL store](./lib/geode/zips.rb?raw=true) known as a
+in-memory NoSQL store](./lib/geomancer/zips.rb?raw=true) known as a
 ["hash"](http://www.ruby-doc.org/core-2.1.1/Hash.html).
 
 But if configured, it can use
@@ -20,15 +20,15 @@ environments.
 Usage:
 
 ```
-require 'geode'
+require 'geomancer'
 
 # Get a hash with lat/long
-Geode.geolocate("700 River Avenue Suite 440 Pittsburgh, PA 15217")
+Geomancer.geolocate("700 River Avenue Suite 440 Pittsburgh, PA 15217")
 
 # Use yahoo boss
-Geode.configure(:yahoo, :api_key => [*id*, *secret*])
+Geomancer.configure(:yahoo, :api_key => [*id*, *secret*])
 
 # Explicitly force bad zip code lookups
-Geode.configure(:zip_code)
+Geomancer.configure(:zip_code)
 
 ```
