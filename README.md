@@ -1,29 +1,27 @@
 # Geode
 
-TODO: Write a gem description
+This is just a simple wrapper around some geolocation code.  By
+default it will just try to extract a US Zip Code from an address and
+provide those coordinates.  If configured, it can use
+[geocoder](https://github.com/alexreisner/geocoder) to do more refined
+geolocation.
 
-## Installation
+This way we ge some (albeit bad) results in development and test
+environments without having to pay a service, but some (good) results
+that we're willing to pay for in production environments.
 
-Add this line to your application's Gemfile:
+Usage:
 
-    gem 'geode'
+```
+require 'geode'
 
-And then execute:
+# Get a hash with lat/long
+Geode.geolocate("700 River Avenue Suite 440 Pittsburgh, PA 15217")
 
-    $ bundle
+# Use yahoo boss
+Geode.configure(:yahoo, :api_key => [*id*, *secret*])
 
-Or install it yourself as:
+# Explicitly force bad zip code lookups
+Geode.configure(:zip_code)
 
-    $ gem install geode
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( http://github.com/<my-github-username>/geode/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+```
