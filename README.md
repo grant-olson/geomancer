@@ -5,7 +5,7 @@ we use at [WebKite](http://webkite.com).
 
 By default it will just try to extract a US Zip Code from an address
 and geolocate coordinates based on an [extremely sophisticated
-in-memory NoSQL store](./lib/geode/zips.rb) known as a
+in-memory NoSQL store](./lib/geode/zips.rb?raw=true) known as a
 ["hash"](http://www.ruby-doc.org/core-2.1.1/Hash.html).
 
 But if configured, it can use
