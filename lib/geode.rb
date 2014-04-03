@@ -10,21 +10,26 @@ module Geode
     when :zip_code then
       require_relative './geode/zip_code'
     else
-      raise "Unknown engine #{engine.inspect}!!!"
+      require 'geocoder'
+      Geocoder.configure(engine => opts)
     end
   end
 
   def self.geolocate address
-    raise "Not configured!!!" if !@engine
+    if !@engine
+      warn("No configuration provided.  Defaulting to zip code geolocator")
+      configure(:zip_code)
+    end
 
     case @engine
     when :zip_code then
       Geode::ZipCode.geolocate(address)
     else
-      raise "Unknown engine #{@engine.inspect}!!!"
-    end
-      
-  end
-  
+      results = Geocoder.search(address)
+      return nil if results.empty?
 
+      first_result = results.first
+      {:latitude => first_result.latitude, :longitude => first_result.longitude}
+    end
+  end
 end
