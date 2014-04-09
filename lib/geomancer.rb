@@ -25,6 +25,7 @@ module Geomancer
     when :zip_code then
       Geomancer::ZipCode.geolocate(address)
     else
+      address = address.gsub(/[\r\n]/,", ") # Yahoo doesn't like newlines
       results = Geocoder.search(address)
       return nil if results.empty?
 
