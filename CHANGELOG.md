@@ -1,3 +1,5 @@
+* Support :cache option to save results: `cache => Redis.new`
+
 0.6.1 - 2014-04-09
 ==================
 

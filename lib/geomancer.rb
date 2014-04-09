@@ -11,7 +11,12 @@ module Geomancer
       require_relative './geomancer/zip_code'
     else
       require 'geocoder'
-      Geocoder.configure(engine => opts)
+
+      cache = opts.delete(:cache)
+      geocoder_config = engine => opts
+      geocoder_config[:cache] = cache if cache
+      
+      Geocoder.configure(geocoder_config)
     end
   end
 
