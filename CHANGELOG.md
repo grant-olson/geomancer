@@ -1,3 +1,6 @@
+0.7.1 - 2014-05-13
+==================
+
 * Don't require ':' in lat/long searches since that conflicts with
   some WebKite filter encodings.
 
