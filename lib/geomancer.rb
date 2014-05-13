@@ -1,4 +1,5 @@
 require "geomancer/version"
+require "geomancer/zip_code"
 
 module Geomancer
   # Your code goes here...
@@ -20,7 +21,31 @@ module Geomancer
     end
   end
 
+  LAT_LONG_RE = /lat(itude)?:\s+(?<latitude>[\d\.\-]+)[\s,]+long(itude)?:\s+(?<longitude>[\d\.\-]+)/
+
+  def self.extract_lat_and_long address
+    matches = LAT_LONG_RE.match(address)
+
+    return nil if !matches
+
+    latitude = matches["latitude"]
+    longitude = matches["longitude"]
+
+    return nil if !(latitude && longitude)
+
+    return {:latitude => latitude.to_f, :longitude => longitude.to_f}
+  end
+
+  def self.zip_code_only? address
+    address.match(/^\d\d\d\d\d(?:-\d\d\d\d)?$/)
+  end
+
   def self.geolocate address
+    return Geomancer::ZipCode.geolocate(address) if zip_code_only?(address)
+
+    lat_and_long = extract_lat_and_long(address)
+    return lat_and_long if lat_and_long
+
     if !@engine
       warn("No configuration provided.  Defaulting to zip code geolocator")
       configure(:zip_code)
