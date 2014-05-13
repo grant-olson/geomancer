@@ -1,3 +1,6 @@
+0.7.0 - 2014-05-13
+==================
+
 * If an address looks like a zip code, don't ever do 'real' 
   geolocation and fall back to the static lookup.
 
