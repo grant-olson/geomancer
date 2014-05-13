@@ -13,6 +13,10 @@ describe Geomancer do
     Geomancer.extract_lat_and_long("lat: 41.9040, long: 12.4530").should_not be_nil
   end
 
+  it "doesn't require colons" do
+    Geomancer.extract_lat_and_long("latitude 41.9040, longitude 12.4530").should_not be_nil
+  end
+
   it "doesn't extract only latitude" do
     Geomancer.extract_lat_and_long("lat: 41.9040").should be_nil
   end

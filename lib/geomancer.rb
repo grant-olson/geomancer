@@ -21,7 +21,7 @@ module Geomancer
     end
   end
 
-  LAT_LONG_RE = /lat(itude)?:\s+(?<latitude>[\d\.\-]+)[\s,]+long(itude)?:\s+(?<longitude>[\d\.\-]+)/
+  LAT_LONG_RE = /lat(itude)?:?\s+(?<latitude>[\d\.\-]+)[\s,]+long(itude)?:?\s+(?<longitude>[\d\.\-]+)/
 
   def self.extract_lat_and_long address
     matches = LAT_LONG_RE.match(address)
