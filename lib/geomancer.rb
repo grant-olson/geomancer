@@ -13,7 +13,7 @@ module Geomancer
       require 'geocoder'
 
       cache = opts.delete(:cache)
-      geocoder_config = engine => opts
+      geocoder_config = { :engine => opts }
       geocoder_config[:cache] = cache if cache
       
       Geocoder.configure(geocoder_config)
